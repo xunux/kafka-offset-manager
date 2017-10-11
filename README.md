@@ -34,6 +34,18 @@ POST BODY:
   "kafkaBroker" : "localhost:9092"
 }
 ```
+
+curl 命令
+```
+curl -l -H "Content-type: application/json" -X POST -d \
+'{
+  "consumerGroupId" : "dlog-flume-group",
+  "topic": "CustomEvent",
+  "kafkaBroker" : "172.16.150.132:9093,172.16.150.133:9093,172.16.150.130:9093,172.16.150.131:9093"
+}' \
+localhost:8082/kafka-offset-manager/boundary?position=start
+```
+
 Moving the offsets to the latest available offset:
 ```
 POST localhost:8082/kafka-offset-manager/boundary?position=end
@@ -55,4 +67,16 @@ POST BODY:
   "kafkaBroker" : "localhost:9092",
   "timeStampInMillis": "23123123123"
 }
+```
+
+curl 命令
+```
+curl -l -H "Content-type: application/json" -X POST -d \
+'{
+  "consumerGroupId" : "dlog-flume-group",
+  "topic": "PlayerLogin",
+  "kafkaBroker" : "172.16.150.132:9093,172.16.150.133:9093,172.16.150.130:9093,172.16.150.131:9093",
+  "timeStampInMillis": "1507708800000"
+}' \
+localhost:8082/kafka-offset-manager/time-based-offset
 ```

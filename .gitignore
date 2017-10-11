@@ -17,3 +17,4 @@ target/
 
 # Project-specific patterns to ignore
 !/gradle/wrapper/gradle-wrapper.jar
+/bin/
